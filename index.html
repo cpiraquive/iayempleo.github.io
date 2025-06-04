@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía: IA, Empleo e Incentivos Globales</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: white; /* Fondo blanco */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px; /* Ajustable según necesidad */
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px; /* Altura base */
+            max-height: 400px; /* Máxima altura */
+        }
+        @media (min-width: 768px) { /* md */
+            .chart-container {
+                height: 350px;
+            }
+        }
+        /* Paleta de Colores "AI for Good" (inspirada en la imagen):
+           Principal: #007BFF (Vibrant Blue) - Ahora #B3B792
+           Secundario: #28A745 (Vibrant Green)
+           Acento Claro: #E0F7FA (Very Light Cyan)
+           Acento Medio: #BBDEFB (Light Blue)
+           Texto Oscuro: #343A40 (Dark Grey)
+           Verde Manzana Claro: #C8E6C9
+           Verde Manzana Oscuro: #81C784
+           Nuevo Verde Oscuro para Degradado: #809671
+           Tono más claro del nuevo verde: #A0B391 (calculado para un degradado sutil)
+           Color de fila de tabla 1: #E5E0D8 (Almond)
+           Color de fila de tabla 2: #B3B792 (Pistache)
+           Colores para Tipos de Incentivos Predominantes: #725c3a y #e5e0d8
+        */
+
+        /* Confirmación: NI Mermaid JS NI SVG fueron utilizados en esta infografía. Todas las visualizaciones se realizan con Chart.js (Canvas) o HTML/CSS (Tailwind). */
+
+        /*
+        Plan Narrativo y Estructura de la Infografía:
+        1. Título Principal: Impacto de la IA en el Empleo y Estrategias Globales de Adaptación.
+        2. Sección 1: Introducción - El Dilema de la IA y el Empleo.
+           - Estadísticas clave: 300M empleos expuestos, $13T contribución IA.
+        3. Sección 2: Panorama Global del Impacto Laboral de la IA.
+           - Gráfico de Barras: Transformación de roles (creación vs. disminución).
+           - Gráfico de Dona: Impacto de género en la automatización.
+        4. Sección 3: Estrategias Corporativas Clave.
+           - Diagrama de Flujo HTML/CSS: Recapacitación y Colaboración Humano-IA.
+           - Énfasis en ética y transparencia.
+        5. Sección 4: Incentivos Gubernamentales y Políticas (Comparativa Internacional).
+           - Tabla HTML: Resumen de incentivos por país.
+           - Gráfico de Barras: Tipos de incentivos predominantes.
+        6. Sección 5: Desafíos Críticos.
+           - Iconos/Texto: Sesgo algorítmico, medición de eficacia, equilibrio innovación-protección.
+        7. Sección 6: Recomendaciones para Colombia.
+           - Lista Organizada HTML/CSS: 6 recomendaciones clave.
+        8. Sección 7: Conclusión - Hacia un Futuro Laboral Aumentado por la IA.
+        */
+
+        /*
+        Selección de Visualizaciones (Confirmando NO SVG/Mermaid):
+        - Sección 1:
+            - Dato: "300 millones de empleos expuestos" -> Visualización: "Single Big Number" (HTML/Tailwind). Meta: Informar. Justificación: Impacto directo.
+            - Dato: "$13 billones a la economía global" -> Visualización: "Single Big Number" (HTML/Tailwind). Meta: Informar. Justificación: Impacto directo.
+        - Sección 2:
+            - Dato: Creación vs. Disminución de Empleos -> Visualización: Gráfico de Barras (Chart.js - Canvas). Meta: Comparar. Justificación: Comparar categorías (sectores/habilidades).
+            - Dato: Impacto de Género (OIT) -> Visualización: Gráfico de Dona (Chart.js - Canvas). Meta: Comparar. Justificación: Comparar proporciones.
+        - Sección 3:
+            - Concepto: Proceso de Recapacitación y Colaboración Humano-IA -> Visualización: Diagrama de Flujo (HTML/CSS con Tailwind). Meta: Organizar. Justificación: Mostrar proceso. Implementación: Divs para nodos, bordes/Unicode para conectores.
+        - Sección 4:
+            - Dato: Comparativa de Incentivos por País -> Visualización: Tabla Detallada (HTML/Tailwind). Meta: Organizar. Justificación: Comparar múltiples variables.
+            - Dato: Tipos de Incentivos Predominantes -> Visualización: Gráfico de Barras (Chart.js - Canvas). Meta: Comparar. Justificación: Comparar frecuencia/énfasis.
+        - Sección 6:
+            - Dato: 6 Recomendaciones Clave -> Visualización: Lista Estilizada / Diagrama Simple (HTML/CSS con Tailwind). Meta: Organizar. Justificación: Presentar información jerárquica.
+        */
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <header class="bg-gradient-to-r from-[#A0B391] to-[#809671] text-white p-6 shadow-lg">
+        <div class="container mx-auto text-center">
+            <h1 class="text-3xl md:text-4xl font-bold">Impacto de la IA en el Empleo y Estrategias Globales de Adaptación</h1>
+            <p class="mt-2 text-lg text-white">Una mirada profunda a los desafíos y oportunidades en la era de la Inteligencia Artificial.</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="introduccion" class="mb-12">
+            <h2 class="text-2xl font-bold text-[#343A40] mb-4 border-b-2 border-[#28A745] pb-2">1. El Dilema de la IA y el Empleo</h2>
+            <p class="mb-6 text-lg text-[#343A40]">La Inteligencia Artificial (IA) presenta una dualidad: un motor de crecimiento económico y productividad sin precedentes, y a la vez, una fuente de preocupación por la transformación y el posible desplazamiento de empleos. Navegar este panorama requiere estrategias proactivas tanto de empresas como de gobiernos.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-gradient-to-br from-white to-[#E0F7FA] text-[#343A40] border-l-4 border-[#B3B792] p-6 rounded-lg shadow-md text-center">
+                    <div class="text-5xl font-bold">~300M</div>
+                    <p class="mt-2 text-xl">empleos a tiempo completo podrían estar expuestos a la automatización por IA generativa a nivel global.</p>
+                    <p class="text-sm mt-1">(Fuente: Goldman Sachs)</p>
+                </div>
+                <div class="bg-gradient-to-br from-white to-[#E0F7FA] text-[#343A40] border-l-4 border-[#B3B792] p-6 rounded-lg shadow-md text-center">
+                    <div class="text-5xl font-bold">$13T</div>
+                    <p class="mt-2 text-xl">podría ser la contribución de la IA a la economía global, impulsando el crecimiento y la innovación.</p>
+                    <p class="text-sm mt-1">(Fuente: McKinsey)</p>
+                </div>
+            </div>
+            <p class="text-md text-[#343A40]">El Foro Económico Mundial predice una creación neta de empleos (69 millones para 2028), pero la clave está en la <strong class="text-[#B3B792]">transformación de roles existentes</strong> y la necesidad de <strong class="text-[#B3B792]">adaptabilidad de la fuerza laboral</strong>.</p>
+        </section>
+
+        <section id="panorama-global" class="mb-12">
+            <h2 class="text-2xl font-bold text-[#343A40] mb-4 border-b-2 border-[#28A745] pb-2">2. Panorama Global del Impacto Laboral de la IA</h2>
+            <p class="mb-6 text-lg text-[#343A40]">La IA está reconfigurando el mercado laboral, creando demanda en nuevas áreas mientras automatiza tareas en otras, y afectando a diferentes grupos demográficos de manera distinta.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold text-[#343A40] mb-3">Transformación de Roles Laborales</h3>
+                    <p class="text-sm text-[#343A40] mb-4">La IA impulsa la demanda de habilidades analíticas y tecnológicas, mientras que roles rutinarios y administrativos tienden a disminuir. Se estima que el 70% de las habilidades laborales cambiarán para 2030.</p>
+                    <div class="chart-container h-[350px] md:h-[400px]">
+                        <canvas id="rolesTransformacionChart"></canvas>
+                    </div>
+                    <p class="text-xs text-center mt-2 text-[#343A40]">Visualización ilustrativa basada en tendencias generales.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold text-[#343A40] mb-3">Impacto de Género en la Automatización</h3>
+                    <p class="text-sm text-[#343A40] mb-4">Según la OIT, en países de altos ingresos, un mayor porcentaje de ocupaciones femeninas está expuesto a la automatización debido a su sobrerrepresentación en roles administrativos.</p>
+                    <div class="chart-container h-[350px] md:h-[400px]">
+                        <canvas id="impactoGeneroChart"></canvas>
+                    </div>
+                     <p class="text-xs text-center mt-2 text-[#343A40]">Datos de la OIT para países de altos ingresos.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="estrategias-corporativas" class="mb-12">
+            <h2 class="text-2xl font-bold text-[#343A40] mb-4 border-b-2 border-[#28A745] pb-2">3. Estrategias Corporativas Clave ante la IA</h2>
+            <p class="mb-6 text-lg text-[#343A40]">Las empresas líderes están adoptando enfoques proactivos para mitigar el desplazamiento laboral, enfocándose en la recapacitación, la colaboración humano-IA y la implementación ética.</p>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-semibold text-[#343A40] mb-4 text-center">Fomentando la Adaptabilidad y la Colaboración</h3>
+                <div class="flex flex-col md:flex-row items-center justify-around space-y-4 md:space-y-0 md:space-x-4">
+                    <div class="bg-gradient-to-br from-white to-[#E0F7FA] border-2 border-[#28A745] p-4 rounded-lg text-center shadow w-full md:w-1/4">
+                        <div class="text-3xl mb-2">🚀</div>
+                        <h4 class="font-semibold">1. Identificar Habilidades Futuras</h4>
+                        <p class="text-xs">Análisis de tendencias y necesidades emergentes.</p>
+                    </div>
+                    <div class="text-3xl text-[#B3B792] hidden md:block">➔</div>
+                    <div class="text-3xl text-[#B3B792] md:hidden self-center">⬇️</div>
+                    <div class="bg-gradient-to-br from-white to-[#E0F7FA] border-2 border-[#28A745] p-4 rounded-lg text-center shadow w-full md:w-1/4">
+                        <div class="text-3xl mb-2">📚</div>
+                        <h4 class="font-semibold">2. Invertir en Recapacitación</h4>
+                        <p class="text-xs">Programas de IBM, Amazon (ej. Certificados Google).</p>
+                    </div>
+                    <div class="text-3xl text-[#B3B792] hidden md:block">➔</div>
+                     <div class="text-3xl text-[#B3B792] md:hidden self-center">⬇️</div>
+                    <div class="bg-gradient-to-br from-white to-[#E0F7FA] border-2 border-[#28A745] p-4 rounded-lg text-center shadow w-full md:w-1/4">
+                         <div class="text-3xl mb-2">🤝</div>
+                        <h4 class="font-semibold">3. Diseñar Colaboración Humano-IA</h4>
+                        <p class="text-xs">Modelos "humano en el bucle" (ej. Siemens: +25% productividad).</p>
+                    </div>
+                     <div class="text-3xl text-[#B3B792] hidden md:block">➔</div>
+                     <div class="text-3xl text-[#B3B792] md:hidden self-center">⬇️</div>
+                    <div class="bg-gradient-to-br from-white to-[#E0F7FA] border-2 border-[#28A745] p-4 rounded-lg text-center shadow w-full md:w-1/4">
+                        <div class="text-3xl mb-2">🛡️</div>
+                        <h4 class="font-semibold">4. Ética y Transparencia</h4>
+                        <p class="text-xs">Comunicación clara y mitigación de sesgos.</p>
+                    </div>
+                </div>
+                 <p class="text-sm text-[#343A40] mt-6">Estas estrategias no solo son una responsabilidad social, sino una ventaja competitiva, generando ahorros, mayor competitividad y satisfacción de los empleados. El enfoque de "humano en el bucle" es crucial para la ética y la equidad.</p>
+            </div>
+        </section>
+
+        <section id="incentivos-gubernamentales" class="mb-12">
+            <h2 class="text-2xl font-bold text-[#343A40] mb-4 border-b-2 border-[#28A745] pb-2">4. Incentivos Gubernamentales y Políticas de Retención</h2>
+            <p class="mb-6 text-lg text-[#343A40]">A nivel mundial, los gobiernos implementan diversas estrategias para apoyar la transición de la fuerza laboral en la era de la IA. El foco principal está en la recapacitación y la adaptabilidad, más que en subsidios directos para mantener roles automatizables.</p>
+            
+            <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <h3 class="text-xl font-semibold text-[#343A40] mb-3">Tipos de Incentivos Predominantes</h3>
+                <p class="text-sm text-[#343A40] mb-4">Los incentivos se orientan mayormente a la mejora de habilidades y la preparación para nuevos roles, buscando la retención a través de la relevancia.</p>
+                <div class="chart-container h-[350px] md:h-[400px]">
+                    <canvas id="tiposIncentivosChart"></canvas>
+                </div>
+                <p class="text-xs text-center mt-2 text-[#343A40]">Análisis cualitativo de tendencias globales en políticas de IA.</p>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6 overflow-x-auto">
+                <h3 class="text-xl font-semibold text-[#343A40] mb-4">Comparativa Internacional de Políticas de Empleo en IA (Ejemplos)</h3>
+                <table class="min-w-full text-sm">
+                    <thead>
+                        <tr>
+                            <th class="bg-[#B3B792] text-white p-3 text-left">País/Región</th>
+                            <th class="bg-[#B3B792] text-white p-3 text-left">Enfoque Principal</th>
+                            <th class="bg-[#B3B792] text-white p-3 text-left">Mecanismos Clave</th>
+                            <th class="bg-[#B3B792] text-white p-3 text-left">Ejemplo de Iniciativa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-[#E5E0D8]"> <td class="p-3 border-b border-gray-300">Singapur</td>
+                            <td class="p-3 border-b border-gray-300">Desarrollo Proactivo de Fuerza Laboral</td>
+                            <td class="p-3 border-b border-gray-300">Subsidios, Créditos, Apoyo Salarial</td>
+                            <td class="p-3 border-b border-gray-300">SkillsFuture, Career Conversion Programmes (hasta 90% apoyo)</td>
+                        </tr>
+                        <tr class="bg-[#B3B792]"> <td class="p-3 border-b border-gray-300">Canadá</td>
+                            <td class="p-3 border-b border-gray-300">Construcción Ecosistema IA y Talento</td>
+                            <td class="p-3 border-b border-gray-300">Subvenciones, Préstamos, Inversión Educación</td>
+                            <td class="p-3 border-b border-gray-300">Regional AI Initiative (hasta $5M)</td>
+                        </tr>
+                        <tr class="bg-[#E5E0D8]"> <td class="p-3 border-b border-gray-300">Reino Unido</td>
+                            <td class="p-3 border-b border-gray-300">Abordar Brecha de Habilidades</td>
+                            <td class="p-3 border-b border-gray-300">Aprendizajes, Plataformas Mejora Habilidades</td>
+                            <td class="p-3 border-b border-gray-300">AI Opportunities Action Plan</td>
+                        </tr>
+                        <tr class="bg-[#B3B792]"> <td class="p-3 border-b border-gray-300">Alemania</td>
+                            <td class="p-3 border-b border-gray-300">Protección Derechos Trabajadores, Codecisión</td>
+                            <td class="p-3 border-b border-gray-300">Marcos Legales, Consulta Comités Empresa</td>
+                            <td class="p-3 border-b border-gray-300">Ley Modernización Comités Empresa</td>
+                        </tr>
+                        <tr class="bg-[#E5E0D8]"> <td class="p-3 border-b border-gray-300">Japón</td>
+                            <td class="p-3 border-b border-gray-300">Promoción Innovación, Apoyo PYMES</td>
+                            <td class="p-3 border-b border-gray-300">Orientación Gubernamental, Subsidios PYMES</td>
+                            <td class="p-3 border-b border-gray-300">Subsidio Apoyo PYMES (hasta 300M JPY)</td>
+                        </tr>
+                         <tr class="bg-[#B3B792]"> <td class="p-3 border-b border-gray-300">Corea del Sur</td>
+                            <td class="p-3 border-b border-gray-300">Competitividad Industrial</td>
+                            <td class="p-3 border-b border-gray-300">Fondos Inversión, Incentivos Evaluación Impacto</td>
+                            <td class="p-3 border-b border-gray-300">Fondo Industrias Avanzadas ($34.4B)</td>
+                        </tr>
+                        <tr class="bg-[#E5E0D8]"> <td class="p-3">Unión Europea</td>
+                            <td class="p-3">Gobernanza Ética, Protección Trabajadores</td>
+                            <td class="p-3">Prohibiciones, Salvaguardias, Transparencia</td>
+                            <td class="p-3">Ley de IA de la UE (énfasis en alto riesgo)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="text-xs text-center mt-4 text-[#343A40]">Fuente: Análisis comparativo del informe de investigación.</p>
+            </div>
+        </section>
+
+        <section id="desafios" class="mb-12">
+            <h2 class="text-2xl font-bold text-[#343A40] mb-4 border-b-2 border-[#28A745] pb-2">5. Desafíos Críticos en la Implementación de Políticas</h2>
+            <p class="mb-6 text-lg text-[#343A40]">La implementación efectiva de políticas de IA enfrenta obstáculos significativos que requieren atención cuidadosa.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center mb-3">
+                        <span class="text-3xl mr-3">⚠️</span>
+                        <h3 class="font-semibold text-[#343A40]">Sesgo Algorítmico</h3>
+                    </div>
+                    <p class="text-sm text-[#343A40]">Los sistemas de IA pueden perpetuar sesgos históricos, llevando a resultados injustos en contratación o evaluación. Se necesitan marcos robustos para la detección y mitigación.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center mb-3">
+                        <span class="text-3xl mr-3">📊</span>
+                        <h3 class="font-semibold text-[#343A40]">Medición de Eficacia</h3>
+                    </div>
+                    <p class="text-sm text-[#343A40]">Evaluar el impacto real de los programas de recapacitación es complejo. La transparencia ("IA explicable") es clave para la confianza y la rendición de cuentas.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center mb-3">
+                        <span class="text-3xl mr-3">⚖️</span>
+                        <h3 class="font-semibold text-[#343A40]">Equilibrio Innovación-Protección</h3>
+                    </div>
+                    <p class="text-sm text-[#343A40]">Fomentar la innovación en IA es vital, pero también lo es proteger a los trabajadores. Se requiere un enfoque regulatorio ágil y basado en riesgos.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="recomendaciones-colombia" class="mb-12">
+            <h2 class="text-2xl font-bold text-[#343A40] mb-6 border-b-2 border-[#28A745] pb-2">6. Recomendaciones Clave para la Legislación de IA en Colombia</h2>
+            <p class="mb-6 text-lg text-[#343A40]">Basado en el panorama global, Colombia puede adoptar estrategias específicas para una transición justa y productiva hacia una economía integrada por la IA.</p>
+            <div class="space-y-6">
+                <div class="bg-gradient-to-br from-white to-[#E0F7FA] border-l-4 border-[#B3B792] rounded-lg shadow-md p-6">
+                    <h3 class="text-lg font-semibold text-[#B3B792] mb-2">1. Priorizar Mejora y Recapacitación de Habilidades</h3>
+                    <p class="text-sm text-[#343A40]">Establecer subvenciones, subsidios o programas de cofinanciación respaldados por el gobierno para las empresas que inviertan en programas integrales de capacitación, recapacitación y reconversión profesional relacionados con la IA para su fuerza laboral existente.</p>
+                </div>
+                <div class="bg-gradient-to-br from-white to-[#E0F7FA] border-l-4 border-[#B3B792] rounded-lg shadow-md p-6">
+                    <h3 class="text-lg font-semibold text-[#B3B792] mb-2">2. Mandatos de Transparencia y Consulta</h3>
+                    <p class="text-sm text-[#343A40]">Exigir a empleadores informar y consultar con trabajadores/sindicatos antes de implementar IA de alto riesgo (similar a Ley IA de la UE y modelo alemán de codecisión).</p>
+                </div>
+                <div class="bg-gradient-to-br from-white to-[#E0F7FA] border-l-4 border-[#B3B792] rounded-lg shadow-md p-6">
+                    <h3 class="text-lg font-semibold text-[#B3B792] mb-2">3. Fomentar Colaboración Humano-IA</h3>
+                    <p class="text-sm text-[#343A40]">Incentivar diseños de IA que aumenten capacidades humanas ("humano en el bucle"), vinculando elegibilidad de incentivos a estas estrategias.</p>
+                </div>
+                <div class="bg-gradient-to-br from-white to-[#E0F7FA] border-l-4 border-[#B3B792] rounded-lg shadow-md p-6">
+                    <h3 class="text-lg font-semibold text-[#B3B792] mb-2">4. Abordar Sesgo Algorítmico y Garantizar Equidad</h3>
+                    <p class="text-sm text-[#343A40]">Legislar evaluaciones de impacto ético obligatorias para IA en RRHH, con foco en prevenir sesgos y proteger datos de empleados.</p>
+                </div>
+                <div class="bg-gradient-to-br from-white to-[#E0F7FA] border-l-4 border-[#B3B792] rounded-lg shadow-md p-6">
+                    <h3 class="text-lg font-semibold text-[#B3B792] mb-2">5. Fortalecer Redes de Seguridad Social</h3>
+                    <p class="text-sm text-[#343A40]">Ampliar apoyo (beneficios desempleo, asesoría) para trabajadores afectados, fomentando asociaciones público-privadas.</p>
+                </div>
+                <div class="bg-gradient-to-br from-white to-[#E0F7FA] border-l-4 border-[#B3B792] rounded-lg shadow-md p-6">
+                    <h3 class="text-lg font-semibold text-[#B3B792] mb-2">6. Enfoque Multilateral y Monitoreo Continuo</h3>
+                    <p class="text-sm text-[#343A40]">Integrar diálogo social (gobierno, empresas, academia, sindicatos) y establecer un observatorio nacional de IA para adaptar políticas.</p>
+                </div>
+            </div>
+        </section>
+
+         <section id="conclusion" class="text-center py-10 bg-gradient-to-br from-[#A0B391] to-[#809671] rounded-lg shadow-xl">
+            <h2 class="text-3xl font-bold text-white mb-4">Hacia un Futuro Laboral Aumentado por la IA</h2>
+            <p class="text-xl text-white max-w-3xl mx-auto mb-6">
+                La clave para navegar la era de la IA no es resistir el cambio, sino abrazar la <strong class="text-[#B3B792]">adaptabilidad</strong>, fomentar la <strong class="text-[#B3B792]">colaboración</strong> entre humanos y máquinas, y construir <strong class="text-[#B3B792]">marcos éticos y equitativos</strong>. Con políticas proactivas y una visión compartida, Colombia puede transformar los desafíos de la IA en oportunidades para un crecimiento inclusivo y un mercado laboral más resiliente y cualificado.
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="bg-gradient-to-r from-[#A0B391] to-[#809671] text-white text-center p-6 mt-12">
+        <p class="text-sm">&copy; 2025 Infografía sobre IA y Empleo. Basada en el informe de investigación proporcionado.</p>
+        <p class="text-xs mt-1">Esta es una visualización de datos con fines ilustrativos y educativos.</p>
+    </footer>
+
+    <script>
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+
+        const processLabels = (labels, maxCharsPerLine = 12) => {
+            return labels.map(label => {
+                if (typeof label === 'string' && label.length > maxCharsPerLine) {
+                    const words = label.split(' ');
+                    const newLabel = [];
+                    let currentLine = '';
+                    words.forEach(word => {
+                        if ((currentLine + word).length > maxCharsPerLine && currentLine.length > 0) {
+                            newLabel.push(currentLine.trim());
+                            currentLine = word + ' ';
+                        } else {
+                            currentLine += word + ' ';
+                        }
+                    });
+                    newLabel.push(currentLine.trim());
+                    return newLabel;
+                }
+                return label;
+            });
+        };
+        
+        // Colores de la paleta "AI for Good" (inspirada en la imagen)
+        const colorPrimary = '#B3B792'; // Nuevo color para las gráficas
+        const colorSecondary = '#28A745'; // Vibrant Green
+        const colorAccentLight = '#E0F7FA'; // Very Light Cyan
+        const colorAccentMedium = '#BBDEFB'; // Light Blue (se mantiene para contraste en algunos elementos)
+        const colorTextDark = '#343A40'; // Dark Grey
+
+        // Gráfico 1: Transformación de Roles Laborales
+        const rolesCtx = document.getElementById('rolesTransformacionChart').getContext('2d');
+        new Chart(rolesCtx, {
+            type: 'bar',
+            data: {
+                labels: processLabels([
+                    'Análisis de Datos e IA',
+                    'Desarrollo y Mtto de IA.',
+                    'Habilidades Interpersonales y Creatividad',
+                    'Roles Admon rutinarios.',
+                    'Trabajo Manual Repetitivo'
+                ], 10),
+                datasets: [{
+                    label: 'Demanda Creciente',
+                    data: [85, 80, 75, 0, 0],
+                    backgroundColor: colorPrimary, /* Usando el nuevo color */
+                    borderColor: colorTextDark,
+                    borderWidth: 1
+                }, {
+                    label: 'Demanda Decreciente',
+                    data: [0, 0, 0, 60, 70],
+                    backgroundColor: colorAccentMedium, /* Se mantiene un acento más claro para decreciente */
+                    borderColor: colorTextDark,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Nivel de Demanda (Ilustrativo)' }
+                    },
+                    x: {
+                         title: { display: true, text: 'Categorías de Roles/Habilidades' },
+                         ticks: {
+                            font: {
+                                size: 10
+                            }
+                         }
+                    }
+                },
+                plugins: {
+                    legend: { position: 'top' },
+                    title: { display: true, text: 'Tendencias en la Demanda de Habilidades por IA' },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+
+        // Gráfico 2: Impacto de Género en la Automatización
+        const generoCtx = document.getElementById('impactoGeneroChart').getContext('2d');
+        new Chart(generoCtx, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    'Mujeres Afectadas',
+                    'Hombres Afectados',
+                    'Mujeres No Afectadas',
+                    'Hombres No Afectados'
+                ],
+                datasets: [{
+                    label: 'Impacto de Automatización por Género (OIT)',
+                    data: [7.8, 2.9, 100-7.8, 100-2.9],
+                    backgroundColor: [colorPrimary, colorSecondary, colorAccentMedium, colorAccentLight], /* Usando el nuevo color */
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        align: 'center',
+                        labels: {
+                            font: {
+                                size: 10
+                            },
+                            boxWidth: 15,
+                            padding: 25
+                        }
+                    },
+                    title: { display: true, text: 'Exposición a Automatización por Género (Países Altos Ingresos)' },
+                    tooltip: { 
+                        callbacks: { 
+                            title: tooltipTitleCallback,
+                            label: function(context) {
+                                let label = context.label || '';
+                                let value = context.parsed !== null ? context.parsed.toFixed(1) + '%' : '';
+                                let additionalInfo = '';
+
+                                if (label === 'Mujeres Afectadas') {
+                                    additionalInfo = ' (~21M empleos)';
+                                } else if (label === 'Hombres Afectados') {
+                                    additionalInfo = ' (~9M empleos)';
+                                }
+                                
+                                return label + ': ' + value + additionalInfo;
+                            }
+                        } 
+                    }
+                }
+            }
+        });
+
+        // Gráfico 3: Tipos de Incentivos Gubernamentales Predominantes
+        const incentivosCtx = document.getElementById('tiposIncentivosChart').getContext('2d');
+        const gradientColors = ['#725c3a', '#e5e0d8']; // Colores para el degradado
+
+        // Función para crear un degradado para cada barra
+        const createGradient = (ctx, chartArea) => {
+            const gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
+            gradient.addColorStop(0, gradientColors[0]); // Color oscuro al inicio
+            gradient.addColorStop(1, gradientColors[1]); // Color claro al final
+            return gradient;
+        };
+
+        new Chart(incentivosCtx, {
+            type: 'bar',
+            data: {
+                labels: processLabels([
+                    'Subsidios Capacitación y Recualificación',
+                    'Créditos Fiscales para I+D en IA y Seguridad (RAISRD)',
+                    'Apoyo Regulatorio y Marcos Éticos',
+                    'Inversión en Ecosistemas de IA y Talento (Fondos e Institutos)',
+                    'Fortalecimiento Redes Seguridad Social'
+                ], 15),
+                datasets: [{
+                    label: 'Énfasis en Políticas Gubernamentales (Global)',
+                    data: [90, 65, 75, 80, 60],
+                    backgroundColor: function(context) {
+                        const chart = context.chart;
+                        const {ctx, chartArea} = chart;
+                        if (!chartArea) {
+                            // This case happens on initial chart load
+                            return gradientColors[0]; // Fallback color
+                        }
+                        return createGradient(ctx, chartArea);
+                    },
+                    borderColor: colorTextDark,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Nivel de Énfasis (Ilustrativo)' }
+                    },
+                    y: {
+                        ticks: {
+                            font: {
+                                size: 8
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    title: { display: true, text: 'Foco Principal de los Incentivos Gubernamentales Globales' },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
